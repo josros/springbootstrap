@@ -1,12 +1,12 @@
 # Bootstrap architecture for spring boot applications
 
-This is a **Blueprint** for spring boot applications. The [sample application](demo-service-one/Readme.md) demonstrates a strict but powerful 3-layer **Component Architecture** based on a simple **Hello World** example.
+This is a **Blueprint** for spring boot applications. The [sample application](demo-service-one/Readme.md) demonstrates a strict, but powerful 3-layer **Component Architecture** based on a simple **Hello World** example.
 
 The project is fully integrated with **Docker**, due to the use of the *docker-maven-plugin*. It shows a possible interpretation of **RESTfulness** and it can easily be integrated with **Microservice** frameworks such as the [Spring Cloud Netflix](https://cloud.spring.io/spring-cloud-netflix/) stack.
 
-Besides it contains configuration for static code analysis (checkstyle) and code formatting.
+Besides, it contains configuration for static code analysis (checkstyle) and code formatting.
 
-Furthermore it illustrates how to externalize common functionality into library projects and how they can be used within different applications.
+Furthermore the repository illustrates how to externalize common functionality into library projects and how they can be used within different applications.
 
 
 # Executive Summary
