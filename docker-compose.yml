@@ -1,0 +1,22 @@
+version: '2'
+services:
+  demo:
+    environment:
+      DB_CONNECTION_STRING: jdbc:postgresql://demodb/demo-data
+      DB_PASSWORD: password
+      DB_USER: user
+    image: "demo-service-one:0.0.1-SNAPSHOT"
+    links:
+      - demodb
+    ports:
+      - "8081:8081"
+
+
+  demodb:
+    environment:
+      POSTGRES_DB: demo-data
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+    image: "postgres:9.5.4"
+    ports:
+      - "5432:5432"
