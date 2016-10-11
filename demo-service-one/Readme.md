@@ -4,7 +4,7 @@ This is a spring boot based application consisting of:
 * A simple **hello world** CRUD application structured in 3-layers:
   * Persistence layer using JPA and Hibernate, entities are called <name>PE and the repository is meant to be used in the business layer
   * The business layer accesses the data, it produces and consumes immutable value objects (VO) only.
-  * The REST layer uses business components and provides REST(ful) data endpoints to be used in arbitrary frontend components. It 
+  * The REST layer uses business components and provides REST(ful) data endpoints to be used in arbitrary frontend components.
 
 * Unit-tests for each layer
 * Proposals of architectural design patters such as the builder pattern
