@@ -13,10 +13,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
 import de.jro.demo.serviceone.hello.business.HelloCF;
 import de.jro.demo.serviceone.hello.business.data.HelloVO;
 import de.jro.demo.serviceone.hello.persistence.HelloRepository;
-import de.jro.demo.serviceone.hello.persistence.data.HelloLanguage;
 import de.jro.demo.serviceone.hello.persistence.data.HelloPE;
 import de.jro.demo.serviceone.test.hello.mocker.HelloVoMocker;
 
@@ -38,7 +38,7 @@ public class HelloCITest {
     HelloPE pe = mockHelloPe(1L, null, null);
     Mockito.when(repo.save(Matchers.any(HelloPE.class))).thenReturn(pe);
     
-    HelloVO mockVo = new HelloVoMocker().language("DE").name("Peter").mock();
+    HelloVO mockVo = new HelloVoMocker().language(HelloLanguage.DE).name("Peter").mock();
     
     final ArgumentCaptor<HelloPE> captor = ArgumentCaptor
         .forClass(HelloPE.class);
@@ -64,7 +64,7 @@ public class HelloCITest {
     HelloVO vo = cf.readOne(id);
     
     Assert.assertEquals(id, vo.getId());
-    Assert.assertEquals("DE", vo.getLanguage());
+    Assert.assertEquals(HelloLanguage.DE, vo.getLanguage());
     Assert.assertEquals("Johann", vo.getName());
   }
   
@@ -88,7 +88,7 @@ public class HelloCITest {
     HelloPE spyPe = spyHelloPe(id, HelloLanguage.DE, "Johann");
     Mockito.when(repo.findByIdAndIsDeletedFalse(id)).thenReturn(spyPe);
     
-    HelloVO mockVo = new HelloVoMocker().name("Gerd").language("EN").mock();
+    HelloVO mockVo = new HelloVoMocker().name("Gerd").language(HelloLanguage.EN).mock();
     
     cf.update(id, mockVo);
     

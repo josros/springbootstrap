@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
 import de.jro.demo.serviceone.hello.business.data.HelloVO;
 import de.jro.demo.serviceone.hello.business.data.HelloVoBuilder;
 import de.jro.demo.serviceone.hello.persistence.HelloRepository;
-import de.jro.demo.serviceone.hello.persistence.data.HelloLanguage;
 import de.jro.demo.serviceone.hello.persistence.data.HelloPE;
 
 @Service
@@ -75,7 +75,8 @@ public class HelloCF implements HelloCI {
   private HelloVO convertToVo(HelloPE pe) {
     HelloVoBuilder vob = new HelloVoBuilder();
     return vob.id(pe.getId())
-        .language(pe.getLang().name()).name(pe.getName()).build();
+        .name(pe.getName())
+        .language(pe.getLang()).build();
   }
   
   private HelloPE convertToPe(HelloVO vo) {
@@ -85,7 +86,7 @@ public class HelloCF implements HelloCI {
   }
   
   private void updatePeAttributes(HelloPE pe, HelloVO vo) {
-    pe.setLang(HelloLanguage.valueOf(vo.getLanguage()));
+    pe.setLang(vo.getLanguage());
     pe.setName(vo.getName());
     pe.setLastUpdateDate(new Date(System.currentTimeMillis()));
   }

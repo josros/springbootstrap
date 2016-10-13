@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
 import de.jro.demo.serviceone.hello.business.HelloCI;
 import de.jro.demo.serviceone.hello.business.data.HelloVO;
 import de.jro.demo.serviceone.hello.rest.HelloRC;
@@ -52,7 +53,7 @@ public class HelloRCTest {
   @Test
   public void testGet() throws Exception {
     Long id = 1L;
-    HelloVO mock = new HelloVoMocker().id(id).name("Hans").language("DE").mock();
+    HelloVO mock = new HelloVoMocker().id(id).name("Hans").language(HelloLanguage.DE).mock();
     Mockito.when(ciMock.readOne(id)).thenReturn(mock);
     
     final String uri = "/hello/" + id;
@@ -66,8 +67,8 @@ public class HelloRCTest {
   
   @Test
   public void testGetAll() throws Exception {
-    HelloVO mock1 = new HelloVoMocker().id(1L).name("Hans").language("DE").mock();
-    HelloVO mock2 = new HelloVoMocker().id(2L).name("Peter").language("DE").mock();
+    HelloVO mock1 = new HelloVoMocker().id(1L).name("Hans").language(HelloLanguage.DE).mock();
+    HelloVO mock2 = new HelloVoMocker().id(2L).name("Peter").language(HelloLanguage.DE).mock();
     List<HelloVO> hellos = Arrays.asList(mock1, mock2);
     
     Mockito.when(ciMock.readAll("DE")).thenReturn(hellos);
@@ -127,7 +128,7 @@ public class HelloRCTest {
             .update(org.mockito.Matchers.eq(id), captor.capture());
     
     final HelloVO hello = captor.getValue();
-    Assert.assertEquals("EN", hello.getLanguage());
+    Assert.assertEquals(HelloLanguage.EN, hello.getLanguage());
     Assert.assertEquals("Johann", hello.getName());
   }
   

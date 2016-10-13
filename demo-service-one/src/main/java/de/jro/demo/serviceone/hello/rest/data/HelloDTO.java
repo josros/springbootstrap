@@ -2,11 +2,13 @@ package de.jro.demo.serviceone.hello.rest.data;
 
 import javax.validation.constraints.NotNull;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
+
 public class HelloDTO {
 
   @NotNull(message = "name must be set.")
   private String name;
-  private HelloLanguageDTO language;
+  private HelloLanguage language;
   
   public String getName() {
     return name;
@@ -16,11 +18,11 @@ public class HelloDTO {
     this.name = name;
   }
   
-  public HelloLanguageDTO getLanguage() {
+  public HelloLanguage getLanguage() {
     return language;
   }
   
-  public void setLanguage(HelloLanguageDTO language) {
+  public void setLanguage(HelloLanguage language) {
     this.language = language;
   }
   

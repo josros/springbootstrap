@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import de.jro.demo.db.data.AbstractEntity;
+import de.jro.demo.serviceone.hello.HelloLanguage;
 
 @Entity(name = "Hello")
 public class HelloPE extends AbstractEntity {

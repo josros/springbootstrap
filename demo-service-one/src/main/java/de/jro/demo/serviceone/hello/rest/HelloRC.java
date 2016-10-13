@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
 import de.jro.demo.serviceone.hello.business.HelloCI;
 import de.jro.demo.serviceone.hello.business.data.HelloVO;
 import de.jro.demo.serviceone.hello.business.data.HelloVoBuilder;
 import de.jro.demo.serviceone.hello.rest.data.HelloDTO;
-import de.jro.demo.serviceone.hello.rest.data.HelloLanguageDTO;
 import de.jro.demo.serviceone.hello.rest.data.HelloWithIdDTO;
 import de.jro.demo.web.defaults.AbstractRestController;
 
@@ -42,7 +42,7 @@ public class HelloRC extends AbstractRestController {
   
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<List<HelloWithIdDTO>> getAll(
-      @RequestParam(required = false) final HelloLanguageDTO language) {
+      @RequestParam(required = false) final HelloLanguage language) {
     log.debug(createGenericLogString("getAll", "language", String.valueOf(language)));
     List<HelloVO> vos = helloCi.readAll(language != null ? language.name() : null);
     return respondOk(convertList(vos));
@@ -80,7 +80,7 @@ public class HelloRC extends AbstractRestController {
   private HelloWithIdDTO convertToDto(HelloVO vo) {
     HelloWithIdDTO dto = new HelloWithIdDTO();
     dto.setId(vo.getId());
-    dto.setLanguage(HelloLanguageDTO.valueOf(vo.getLanguage()));
+    dto.setLanguage(vo.getLanguage());
     dto.setName(vo.getName());
     return dto;
   }
@@ -91,7 +91,7 @@ public class HelloRC extends AbstractRestController {
       vob.id(((HelloWithIdDTO) dto).getId());
     }
     return vob.name(dto.getName())
-        .language(dto.getLanguage().name()).build();
+        .language(dto.getLanguage()).build();
   }
   
 }

@@ -1,10 +1,12 @@
 package de.jro.demo.serviceone.hello.builder;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
+
 public class GenericHelloBuilder<B extends GenericHelloBuilder<B>> {
 
   protected Long id;
   protected String name;
-  protected String language;
+  protected HelloLanguage language;
   
   @SuppressWarnings("unchecked")
   public B id(Long id) {
@@ -19,7 +21,7 @@ public class GenericHelloBuilder<B extends GenericHelloBuilder<B>> {
   }
   
   @SuppressWarnings("unchecked")
-  public B language(String language) {
+  public B language(HelloLanguage language) {
     this.language = language;
     return (B) this;
   }

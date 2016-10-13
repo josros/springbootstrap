@@ -1,19 +1,21 @@
 package de.jro.demo.serviceone.hello.business.data;
 
+import de.jro.demo.serviceone.hello.HelloLanguage;
+
 public class HelloVO {
 
   private final Long id;
   private final String name;
-  private final String language;
+  private final HelloLanguage language;
   
-  public HelloVO(String name, String language) {
+  public HelloVO(String name, HelloLanguage language) {
     super();
     this.id = null;
     this.name = name;
     this.language = language;
   }
   
-  public HelloVO(Long id, String name, String language) {
+  public HelloVO(Long id, String name, HelloLanguage language) {
     super();
     this.id = id;
     this.name = name;
@@ -28,7 +30,7 @@ public class HelloVO {
     return name;
   }
 
-  public String getLanguage() {
+  public HelloLanguage getLanguage() {
     return language;
   }
   
