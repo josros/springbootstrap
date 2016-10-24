@@ -16,9 +16,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface AbstractEntityRepository<E extends AbstractEntity>
     extends CrudRepository<E, Long> {
 
-  E findByIdAndIsDeletedFalse(Long id);
+  E findByIdAndDeletedFalse(Long id);
   
-  List<E> findByIsDeletedTrue();
+  List<E> findByDeletedTrue();
 
-  List<E> findByIsDeletedFalse();
+  List<E> findByDeletedFalse();
 }

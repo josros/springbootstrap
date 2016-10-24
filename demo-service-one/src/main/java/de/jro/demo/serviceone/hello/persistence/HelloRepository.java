@@ -8,6 +8,6 @@ import de.jro.demo.serviceone.hello.persistence.data.HelloPE;
 
 public interface HelloRepository extends AbstractEntityRepository<HelloPE> {
 
-  public List<HelloPE> findAllByLangAndIsDeletedFalse(HelloLanguage lang);
+  public List<HelloPE> findAllByLangAndDeletedFalse(HelloLanguage lang);
   
 }

@@ -59,7 +59,7 @@ public class HelloCITest {
   public void testReadOne() {
     Long id = 1L;
     HelloPE mockPe = mockHelloPe(id, HelloLanguage.DE, "Johann");
-    Mockito.when(repo.findByIdAndIsDeletedFalse(id)).thenReturn(mockPe);
+    Mockito.when(repo.findByIdAndDeletedFalse(id)).thenReturn(mockPe);
     
     HelloVO vo = cf.readOne(id);
     
@@ -73,7 +73,7 @@ public class HelloCITest {
     HelloPE mockPe1 = mockHelloPe(1L, HelloLanguage.DE, "Johann");
     HelloPE mockPe2 = mockHelloPe(2L, HelloLanguage.DE, "Gerd");
     List<HelloPE> mocks = Arrays.asList(mockPe1, mockPe2);
-    Mockito.when(repo.findAllByLangAndIsDeletedFalse(HelloLanguage.DE)).thenReturn(mocks);
+    Mockito.when(repo.findAllByLangAndDeletedFalse(HelloLanguage.DE)).thenReturn(mocks);
     
     List<HelloVO> vos = cf.readAll("DE");
     
@@ -86,7 +86,7 @@ public class HelloCITest {
   public void testUpdate() {
     Long id = 5L;
     HelloPE spyPe = spyHelloPe(id, HelloLanguage.DE, "Johann");
-    Mockito.when(repo.findByIdAndIsDeletedFalse(id)).thenReturn(spyPe);
+    Mockito.when(repo.findByIdAndDeletedFalse(id)).thenReturn(spyPe);
     
     HelloVO mockVo = new HelloVoMocker().name("Gerd").language(HelloLanguage.EN).mock();
     
@@ -100,7 +100,7 @@ public class HelloCITest {
   public void testDelete() {
     Long id = 7L;
     HelloPE spyPe = spyHelloPe(id, HelloLanguage.DE, "Johann");
-    Mockito.when(repo.findByIdAndIsDeletedFalse(id)).thenReturn(spyPe);
+    Mockito.when(repo.findByIdAndDeletedFalse(id)).thenReturn(spyPe);
     
     cf.delete(id);
     

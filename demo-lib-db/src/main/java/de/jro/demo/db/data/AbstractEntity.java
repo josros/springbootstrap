@@ -23,7 +23,7 @@ public abstract class AbstractEntity {
   private long id = -1L;
 
   @Column(name = "is_deleted")
-  private boolean isDeleted = false;
+  private boolean deleted = false;
 
   @Column(name = "last_update_date")
   protected Date lastUpdateDate = new Date(System.currentTimeMillis());
@@ -37,13 +37,17 @@ public abstract class AbstractEntity {
   public long getId() {
     return id;
   }
-
+  
+  public void setId(Long id) {
+    this.id = id;
+  }
+  
   public boolean isDeleted() {
-    return isDeleted;
+    return deleted;
   }
 
-  public void setDeleted(final boolean isDeleted) {
-    this.isDeleted = isDeleted;
+  public void setDeleted(final boolean deleted) {
+    this.deleted = deleted;
   }
 
   public Date getLastUpdateDate() {

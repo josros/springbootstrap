@@ -37,10 +37,10 @@ public class HelloCF implements HelloCI {
   public List<HelloVO> readAll(String language) {
     List<HelloPE> hellos = null;
     if (language != null) {
-      hellos = helloRepository.findAllByLangAndIsDeletedFalse(
+      hellos = helloRepository.findAllByLangAndDeletedFalse(
           HelloLanguage.valueOf(language));
     } else {
-      hellos = helloRepository.findByIsDeletedFalse();
+      hellos = helloRepository.findByDeletedFalse();
     }
     return convertAll(hellos);
   }
@@ -65,7 +65,7 @@ public class HelloCF implements HelloCI {
   }
   
   private HelloPE findExistingElement(Long id) {
-    HelloPE pe = helloRepository.findByIdAndIsDeletedFalse(id);
+    HelloPE pe = helloRepository.findByIdAndDeletedFalse(id);
     if (pe == null) {
       throw new NoSuchElementException("No element with id: " + id);
     }

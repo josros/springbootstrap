@@ -32,7 +32,7 @@ public class HelloRepositoryTest {
   @Sql("/test-createHellos.sql")
   public void testFindAllByLangAndIsDeletedFalse() {
     List<HelloPE> pesFound = helloRepository
-        .findAllByLangAndIsDeletedFalse(HelloLanguage.DE);
+        .findAllByLangAndDeletedFalse(HelloLanguage.DE);
     Assert.assertEquals(2, pesFound.size());
     Assert.assertTrue(pesFound.stream().anyMatch(h -> h.getName().equals("Hans")));
     Assert.assertTrue(pesFound.stream().anyMatch(h -> h.getName().equals("Johann")));
