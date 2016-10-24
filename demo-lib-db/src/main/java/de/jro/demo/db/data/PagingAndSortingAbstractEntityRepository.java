@@ -19,12 +19,12 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface PagingAndSortingAbstractEntityRepository<E extends AbstractEntity>
     extends PagingAndSortingRepository<E, Long> {
 
-  List<E> findByIsDeletedTrue();
+  List<E> findByDeletedTrue();
 
-  Page<E> findByIsDeletedTrue(Pageable pageable);
+  Page<E> findByDeletedTrue(Pageable pageable);
 
-  List<E> findByIsDeletedFalse();
+  List<E> findByDeletedFalse();
 
-  Page<E> findByIsDeletedFalse(Pageable pageable);
+  Page<E> findByDeletedFalse(Pageable pageable);
   
 }
